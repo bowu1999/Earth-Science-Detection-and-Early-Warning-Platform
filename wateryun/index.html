@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>地下水实时监测系统</title>
+	<!-- 模式edge要求IE以当前版本所支持的最高级标准模式渲染，避免版本升级	影响 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+	<!-- 导入Echarts -->
+	<script type="text/javascript" src="js/echarts.min.js"></script>
+	<!-- 导入css -->
+	<link rel="stylesheet" href="css/index_css.css">
+
+</head>
+
+<body>
+	<!-- 总容器 -->
+	<div class="viewport">
+		<!-- 第一区块 -->
+		<div class="column">
+			<!-- 国家地图模块 -->
+			<div class='panel china_map'>
+				<div class="inner">
+					<h3>全国设备分布</h3>
+					<div class='map_show' id='c_map'></div>
+				</div>
+			</div>
+			<!-- 实时数据模块 -->
+			<div class='panel time_data'>
+				<div class="inner">
+					<div class="t_d_title">
+						<span class='col'>日期(年月日)</span>
+						<span class='col'>时间(时分秒)</span>
+						<span class='col'>水位(m)</span>
+						<span class='col'>电导率(μS/cm)</span>
+						<span class='col'>电阻率(Ω·cm)</span>
+						<span class='col'>温度(℃)</span>
+						<span class='col'>TDS(ppm)</span>
+						<span class='col'>盐度(mg/L)</span>
+					</div>
+					<div class="t_d_show">
+						<div class='marquee'>
+							<div class="row">
+								<span class="col" id='sp0_0'></span>
+								<span class="col" id='sp0_1'></span>
+								<span class="col" id='sp0_2'></span>
+								<span class="col" id='sp0_3'></span>
+								<span class="col" id='sp0_4'></span>
+								<span class="col" id='sp0_5'></span>
+								<span class="col" id='sp0_6'></span>
+								<span class="col" id='sp0_7'></span>
+								<span class="icon-dot"></span>
+							</div>
+							<div class="row">
+								<span class="col" id='sp1_0'></span>
+								<span class="col" id='sp1_1'></span>
+								<span class="col" id='sp1_2'></span>
+								<span class="col" id='sp1_3'></span>
+								<span class="col" id='sp1_4'></span>
+								<span class="col" id='sp1_5'></span>
+								<span class="col" id='sp1_6'></span>
+								<span class="col" id='sp1_7'></span>
+								<span class="icon-dot"></span>
+							</div>
+							<div class="row">
+								<span class="col" id='sp2_0'></span>
+								<span class="col" id='sp2_1'></span>
+								<span class="col" id='sp2_2'></span>
+								<span class="col" id='sp2_3'></span>
+								<span class="col" id='sp2_4'></span>
+								<span class="col" id='sp2_5'></span>
+								<span class="col" id='sp2_6'></span>
+								<span class="col" id='sp2_7'></span>
+								<span class="icon-dot"></span>
+							</div>
+							<div class="row">
+								<span class="col" id='sp3_0'></span>
+								<span class="col" id='sp3_1'></span>
+								<span class="col" id='sp3_2'></span>
+								<span class="col" id='sp3_3'></span>
+								<span class="col" id='sp3_4'></span>
+								<span class="col" id='sp3_5'></span>
+								<span class="col" id='sp3_6'></span>
+								<span class="col" id='sp3_7'></span>
+								<span class="icon-dot"></span>
+							</div>
+							<div class="row">
+								<span class="col" id='sp4_0'></span>
+								<span class="col" id='sp4_1'></span>
+								<span class="col" id='sp4_2'></span>
+								<span class="col" id='sp4_3'></span>
+								<span class="col" id='sp4_4'></span>
+								<span class="col" id='sp4_5'></span>
+								<span class="col" id='sp4_6'></span>
+								<span class="col" id='sp4_7'></span>
+								<span class="icon-dot"></span>
+							</div>
+							<div class="row">
+								<span class="col" id='sp5_0'></span>
+								<span class="col" id='sp5_1'></span>
+								<span class="col" id='sp5_2'></span>
+								<span class="col" id='sp5_3'></span>
+								<span class="col" id='sp5_4'></span>
+								<span class="col" id='sp5_5'></span>
+								<span class="col" id='sp5_6'></span>
+								<span class="col" id='sp5_7'></span>
+								<span class="icon-dot"></span>
+							</div>
+							<div class="row">
+								<span class="col" id='sp6_0'></span>
+								<span class="col" id='sp6_1'></span>
+								<span class="col" id='sp6_2'></span>
+								<span class="col" id='sp6_3'></span>
+								<span class="col" id='sp6_4'></span>
+								<span class="col" id='sp6_5'></span>
+								<span class="col" id='sp6_6'></span>
+								<span class="col" id='sp6_7'></span>
+								<span class="icon-dot"></span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 第二区块 -->
+		<div class="column">
+			<!-- 省地图 -->
+			<div class='panel province_map'>
+				<div class="inner">
+					<div class="p_m_show" id='p_map'></div>
+				</div>
+			</div>
+			<!-- 走势图 -->
+			<div class='panel trend'>
+				<div class="inner">
+					<div class='title' >
+						<h3 id='pl1_tl'>地下水位走势图</h3>
+						<a class="year">年</a>
+						<a class="quarter">季</a>
+						<a class="month">月</a>
+						<a class="week">周</a>
+					</div>
+					<div class='line'  id='pl1'></div>
+					<!-- 菜单1 -->
+					<div class='menu' id='m'>
+						<!-- 水位 -->
+						<button id='depth'>水位</button>
+						<!-- 电导率 -->
+						<button id='conduct'>电导率</button>
+						<!-- 电解率 -->
+						<button id='resistivity'>电解率</button>
+						<!-- 温度 -->
+						<button id='temperature'>温度</button>
+						<!--tds -->
+						<button id='tds'>TDS</button>
+						<!-- 盐度 -->
+						<button id='salinity'>盐度</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- script部分 -->
+	<!-- 中国地图 -->
+	<script mtype="text/javascript" src="js/map/china.js"></script>
+	<script mtype="text/javascript" src="js/map/echarts-gl.min.js"></script>
+	<script mtype="text/javascript" src="js/china_map.js"></script>
+	<!-- 图表2 -->
+	<script mtype="text/javascript" src="js/panel1.js"></script>
+	<!-- 实时数据显示 使用ajax实现区块从数据库实时读取数据实时刷新 -->
+	<script mtype="text/javascript" src="js/ajax_rectime.js"></script>
+</body>
+
+</html>

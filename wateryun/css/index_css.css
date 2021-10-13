@@ -1,0 +1,209 @@
+@charset "utf-8";
+
+/* 清除元素默认的内外边距 */
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+/* 取消所有斜体 */
+em,
+i {
+  font-style: normal;
+}
+/* 去掉列表前面的小点 */
+li {
+  list-style: none;
+}
+/* 图片没有边框  去掉图片底册空白缝隙 */
+img {
+  border:0;
+  vertical-align: middle;
+}
+/* 让button 变成小手 */
+button {
+  cursor: pointer;
+}
+/* 取消链接下划线 */
+a {
+  color: #666;
+  text-decoration: none;
+}
+a:hover {
+  color:#e33333;
+}
+
+.header{
+  font-size: 2rem;
+  text-align: center;
+  color: cadetblue;
+}
+
+/* 全局样式 */
+body {
+  background-image:url('../img/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* 主体样式 */
+.viewport {
+  display: flex;
+  min-width: 1024px;
+  max-width: 1920px;
+  margin:0 auto;
+  padding: 5rem 1rem 0;
+  background-image: url('../img/header.png');
+  background-repeat: no-repeat;
+  background-size: contain ;
+  min-height: 680px;
+  max-height: 1080px;
+  height: 60rem;
+}
+/* 区块样式 */
+.viewport  .column{
+  width: 54rem;
+} 
+.viewport  .column:nth-child(2){
+  width: 39rem;
+}
+/* 公共面板样式 */
+.panel {
+  position: relative;
+  border:0.2rem transparent;
+  border-image:url('../img/panel.png') 10;
+  border-style: solid;
+  border-width:0.4rem;
+  /* margin-bottom: 0.1rem; */
+}
+/* 面板内部标题h3样式 */
+.panel h3{
+  color: cadetblue;
+  font-size: 20px;
+}
+/* 面板内部链接a样式 */
+.panel a{
+  color: cadetblue;
+  font-size: 20px;
+}
+/* 面板内部显示区域样式 */
+.inner {
+  position: absolute;
+  top:-1rem;
+  left: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  padding: 2rem 2rem ;
+}
+/* 国家地图模块 */
+.china_map {
+  width: 54rem;
+  height: 28rem;
+  background-image: url('../img/bg03.png');
+  background-size:54rem 28rem;
+}
+.china_map h3{
+  text-align: center;
+}
+.china_map .map_show{
+  width: 51rem;
+  height: 22rem;
+}
+/* 实时数据表样式 */
+.time_data {
+  top: 0.6rem;
+  width: 54rem;
+  height: 12rem;
+  background-image: url('../img/bg02.png');
+  background-size:54rem 12rem;
+}
+.time_data .t_d_title{
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.05;
+    background-color: rgb(11, 69, 134);
+    padding: 0.5rem 0.5rem;
+    color: #0fdee6;
+    font-size: 0.8rem;
+}
+.time_data .row{
+  display: flex;
+  height: 0.8rem;
+  justify-content: space-between;
+  line-height: 1;
+  padding: 0.5rem 0.5rem;
+  color: rgb(9, 211, 201);
+  font-size: 0.6rem;
+}
+.time_data .row .icon-dot{
+  position: absolute;
+  left: 0.2rem;
+  opacity: 0;
+}
+.time_data .row:hover{
+  background-color: rgb(37, 89, 131);
+  color: rgb(12, 196, 82);
+}
+.time_data .row:hover .icon-dot{
+  opacity: 1;
+}
+.time_data .col{
+  width: 5rem;
+}
+/* 省份地图样式 */
+.province_map {
+  left :0.6rem;
+  width: 38rem;
+  height: 20rem;
+  background-image: url('../img/bg02.png');
+  background-size:38rem 20rem;
+}
+/* 走势图样式 */
+.trend{
+  top: 0.6rem;
+  left :0.6rem;
+  width: 38rem;
+  height: 20rem;
+  background-image: url('../img/bg02.png');
+  background-size:38rem 20rem;
+}
+.trend .title{
+  display: flex;
+  flex: auto ;
+  width: 38rem;
+  height: 2rem;
+}
+.trend h3{
+  text-align: center;
+  width: 12rem;
+}
+.trend a{
+  padding-top: 1rem;
+  width: 3rem;
+  font-size: 0.8rem;
+}
+.trend a:hover{
+  color:  rgb(212, 131, 10);
+}
+.trend .line{
+  width: 30rem;
+  height: 16rem;
+}
+.trend .menu{
+  position: absolute;
+  border:1rem;
+  top: 5rem;
+  left: 32rem;
+  width: 6rem;
+  height: 10rem;
+}
+.trend .menu button{
+  background-color: transparent;
+  border-color: transparent;
+  color: cadetblue;
+  font-size: 0.5rem;
+  width: 4rem;
+  height: 2rem;
+}
+.trend .menu button:hover{
+  color: rgb(212, 131, 10);
+}
