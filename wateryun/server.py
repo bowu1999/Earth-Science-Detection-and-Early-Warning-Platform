@@ -9,6 +9,11 @@ import ctypes
 import func_timeout
 from func_timeout import func_set_timeout
 
+'''日志记录'''
+import traceback
+
+
+
 # 进制转换
 def hex_to_float(h):
     i = int(h,16)
@@ -50,7 +55,7 @@ class ServerSocket(object):
         self.s = socket.socket()
         self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.s.bind((self.host, self.port))
-        self.s.listen(1000)
+        self.s.listen(2)
         
 
     def accept(self):
@@ -99,8 +104,11 @@ def get_value(server,conn):
 
 def main():
     link_server = ServerSocket('0.0.0.0', 2133)
-    tcp_conn,tcp_addr = link_server.accept()
+    # tcp_conn,tcp_addr = link_server.accept()
     while True:
+        print("<+++++++++++++++++++++++++++++++++++>")
+        tcp_conn,tcp_addr = link_server.accept()
+        print("连接成功")
         mysql_cur,mysql_conn = connect_mysql()
         #当前时间
         rectime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -109,12 +117,28 @@ def main():
         try:
             data_list = get_value(link_server,tcp_conn)
             if(data_list == -1):
+                print("连接断开")
+                tcp_conn.close()
+                print("重连")
+                tcp_conn,tcp_addr = link_server.accept()
                 continue
-        except func_timeout.exceptions.FunctionTimedOut:
+        except func_timeout.exceptions.FunctionTimedOut as e1:
+            with open('logs/server_log.log',"a") as f:
+                traceback.print_exc(file = f)
             print("超时")
+            tcp_conn.shutdown(2)
             tcp_conn.close()
+            print("连接已断开，准备重连")
             print("重连")
-            tcp_conn,tcp_addr = link_server.accept()
+            continue
+        except Exception as e:
+            print("未知错误")
+            with open('logs/server_log.log',"a") as f:
+                traceback.print_exc(file = f)
+                tcp_conn.shutdown(2)
+                tcp_conn.close()
+                print("连接已断开，准备重连")
+                print("重连")
             continue
         mysql_list = []
         mysql_list.append(data_list[0])#时间
@@ -129,10 +153,9 @@ def main():
         print("温度：",mysql_list[4])
         mysql_list.append(round(hex2float(data_list[5][6:14]),3))#TDS
         print("TDS：",mysql_list[5])
-        mysql_list.append(round(hex2float(data_list[6][6:14]),3))
+        mysql_list.append(round(hex2float(data_list[6][6:14]),3))#盐度
         print("盐度：",mysql_list[6])
-        
-        device_id='123456'
+        device_id=str(tcp_addr[0])
         depth,conduct,resistivity,temperature,tds,salinity,rectime = mysql_list[1],mysql_list[2],mysql_list[3],mysql_list[4],mysql_list[5],mysql_list[6],mysql_list[0]
         sql = "insert into Table_water(deviceID,depth,conduct,resistivity,temperature,tds,salinity,date_time) values (%s,%s,%s,%s,%s,%s,%s,%s)"
         values = (device_id,depth,conduct,resistivity,temperature,tds,salinity,rectime)
@@ -141,7 +164,9 @@ def main():
         print("数据传入成功")
         mysql_cur.close()
         mysql_conn.close()
-        time.sleep(600)
+        tcp_conn.close()
+        print("<===================================>")
+        time.sleep(2)
     
     link_server.close_conn()
     
