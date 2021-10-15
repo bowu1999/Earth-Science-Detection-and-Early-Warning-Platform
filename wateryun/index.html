@@ -19,12 +19,9 @@
 	<div class="viewport">
 		<!-- 第一区块 -->
 		<div class="column">
-			<!-- 国家地图模块 -->
-			<div class='panel china_map'>
-				<div class="inner">
-					<h3>全国设备分布</h3>
-					<div class='map_show' id='c_map'></div>
-				</div>
+			<!-- 天地图模块 -->
+			<div class='panel map'>
+				<div id="mapDiv"></div>
 			</div>
 			<!-- 实时数据模块 -->
 			<div class='panel time_data'>
@@ -126,10 +123,9 @@
 		</div>
 		<!-- 第二区块 -->
 		<div class="column">
-			<!-- 省地图 -->
-			<div class='panel province_map'>
-				<div class="inner">
-					<div class="p_m_show" id='p_map'></div>
+			<!-- 国家地图 -->
+			<div class='panel view_map'>
+				<div class="inner" id='c_map'>
 				</div>
 			</div>
 			<!-- 走势图 -->
@@ -163,14 +159,23 @@
 		</div>
 	</div>
 	<!-- script部分 -->
+	<!-- 百度地图 -->
+	<!-- 百度地图密钥 -->
+	<!-- <script type="javascript/html" src="baidumap.html"></script>
+	<script>
+            $("#mapDiv").load("baidumap.html");
+        </script> -->
+    <script type="text/javascript">
+    	document.getElementById("mapDiv").innerHTML = '<object type="text/html" data="baidumap.html" width="100%" height="100%"></object>';
+    </script>
 	<!-- 中国地图 -->
-	<script mtype="text/javascript" src="js/map/china.js"></script>
-	<script mtype="text/javascript" src="js/map/echarts-gl.min.js"></script>
-	<script mtype="text/javascript" src="js/china_map.js"></script>
+	<script type="text/javascript" src="js/map/china.js"></script>
+	<script type="text/javascript" src="js/map/echarts-gl.min.js"></script>
+	<script type="text/javascript" src="js/china_map.js"></script>
 	<!-- 图表2 -->
-	<script mtype="text/javascript" src="js/panel1.js"></script>
+	<script type="text/javascript" src="js/panel1.js"></script>
 	<!-- 实时数据显示 使用ajax实现区块从数据库实时读取数据实时刷新 -->
-	<script mtype="text/javascript" src="js/ajax_rectime.js"></script>
+	<script type="text/javascript" src="js/ajax_rectime.js"></script>
 </body>
 
 </html>

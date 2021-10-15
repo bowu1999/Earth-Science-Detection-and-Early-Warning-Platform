@@ -40,7 +40,7 @@ a:hover {
 }
 
 /* 全局样式 */
-body {
+body,html {
   background-image:url('../img/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -94,20 +94,18 @@ body {
   bottom: -1rem;
   padding: 2rem 2rem ;
 }
-/* 国家地图模块 */
-.china_map {
+/* 天地图模块 */
+.map {
   width: 54rem;
   height: 28rem;
-  background-image: url('../img/bg03.png');
-  background-size:54rem 28rem;
 }
-.china_map h3{
-  text-align: center;
+.map #mapDiv{
+  left: 0rem;
+  top: 0rem;
+  width:100%;
+  height:100%;
 }
-.china_map .map_show{
-  width: 51rem;
-  height: 22rem;
-}
+
 /* 实时数据表样式 */
 .time_data {
   top: 0.6rem;
@@ -149,8 +147,8 @@ body {
 .time_data .col{
   width: 5rem;
 }
-/* 省份地图样式 */
-.province_map {
+/* 国家地图样式 */
+.view_map {
   left :0.6rem;
   width: 38rem;
   height: 20rem;

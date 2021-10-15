@@ -144,7 +144,24 @@
 
     var color = ['#a6c84c', '#ffa022', '#46bee9'];//航线的颜色
     option = {
-        backgroundColor: 'rgba(128, 128, 128, 0.1)',
+        title: {
+            show:true, 
+            text:"设备布置区域",
+            left:'center',
+            textStyle:{
+                //文字颜色
+                color: 'cadetblue',
+                //字体风格,'normal','italic','oblique'
+                fontStyle:'normal',
+                //字体粗细 'normal','bold','bolder','lighter',100 | 200 | 300 | 400...
+                fontWeight:'bold',
+                //字体系列
+                fontFamily:'sans-serif',
+                //字体大小
+        　　　　 fontSize:18
+            }
+
+        },
         tooltip: {
             padding: 0,
             enterable: true,
@@ -247,87 +264,7 @@
             
         ]
     };
-//    [['西安', XAData], ['西宁', XNData], ['银川', YCData]].forEach(function (item, i) {  
-//         option.series.push({
-//             name: item[0] + ' Top3',
-//             type: 'lines',
-//             zlevel: 1,
-//             effect: {
-//                 show: true,
-//                 period: 6,
-//                 trailLength: 0.7,
-//                 color: 'red',   //arrow箭头的颜色
-//                 symbolSize: 3
-//             },
-//             lineStyle: {
-//                 normal: {
-//                     color: color[i],
-//                     width: 0,
-//                     curveness: 0.2
-//                 }
-//             },
-//             data: convertData(item[1])
-//         },
-//         {
-//             name: item[0] + ' Top3',
-//             type: 'lines',
-//             zlevel: 2,
-//             symbol: ['none', 'arrow'],
-//             symbolSize: 10,
-//             effect: { 
-//                 show: true,
-//                 period: 6,
-//                 trailLength: 0,
-//                 symbol: planePath,
-//                 symbolSize: 15
-//             },
-//             lineStyle: {
-//                 normal: {
-//                     color: color[i],
-//                     width: 1,
-//                     opacity: 0.6,
-//                     curveness: 0.2
-//                 }
-//             },
-//             data: convertData(item[1])
-//         },
-//         {
-//             name: item[0] + ' Top3',
-//             type: 'effectScatter',
-//             coordinateSystem: 'geo',
-//             zlevel: 2,
-//             rippleEffect: {
-//                 brushType: 'stroke'
-//             },
-//             label: {
-//                 normal: {
-//                     show: true,
-//                     position: 'bottom',
-//                     formatter: '{b}',
-//                     fontSize:16,
-//                     color:'#fff'
-//                 }
-//             },
-//         // symbolSize: function (val) {
-//         //     return val[2] / 8;
-//         // },
-//             symbolSize:20,
-//             itemStyle: {
-//                 normal: {
-//                     color: 'yellow',
-//                 },
-//                 emphasis: {
-//                     areaColor: '#2B91B7'
-//                 }
-//             },
-//             data: item[1].map(function (dataItem) {
-//                 return {
-//                     name: dataItem[1].name,
-//                     value: geoCoordMapData[dataItem[1].name].concat([dataItem[1].value])
-//                 };
-//             })
-//         });
-//     });
+// 
     var showTip = setInterval(function() {
         
         option.geo.itemStyle.normal.shadowColor='rgba(0,243,255,1)';
