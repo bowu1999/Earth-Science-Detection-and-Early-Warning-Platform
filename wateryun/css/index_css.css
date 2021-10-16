@@ -57,7 +57,6 @@ body,html {
   background-size: contain ;
   min-height: 680px;
   max-height: 1080px;
-  height: 60rem;
 }
 /* 区块样式 */
 .viewport  .column{
@@ -100,6 +99,7 @@ body,html {
   height: 28rem;
 }
 .map #mapDiv{
+  overflow:hidden;
   left: 0rem;
   top: 0rem;
   width:100%;
@@ -150,58 +150,45 @@ body,html {
 /* 国家地图样式 */
 .view_map {
   left :0.6rem;
-  width: 38rem;
+  width: 38.6rem;
   height: 20rem;
   background-image: url('../img/bg02.png');
-  background-size:38rem 20rem;
+  background-size:38.6rem 20rem;
 }
 /* 走势图样式 */
 .trend{
+  flex-direction:row;
   top: 0.6rem;
   left :0.6rem;
-  width: 38rem;
+  width: 38.6rem;
   height: 20rem;
   background-image: url('../img/bg02.png');
-  background-size:38rem 20rem;
+  background-size:38.6rem 20rem;
 }
-.trend .title{
+/*.trend .inner{
   display: flex;
-  flex: auto ;
-  width: 38rem;
-  height: 2rem;
 }
-.trend h3{
-  text-align: center;
-  width: 12rem;
+*/
+.coln{
+  width: 100%;
+  height: 4%;
+} 
+.coln:nth-child(2){
+  top: 2%; 
+  height: 92%;
 }
-.trend a{
-  padding-top: 1rem;
-  width: 3rem;
-  font-size: 0.8rem;
-}
-.trend a:hover{
-  color:  rgb(212, 131, 10);
-}
-.trend .line{
-  width: 30rem;
-  height: 16rem;
-}
-.trend .menu{
-  position: absolute;
-  border:1rem;
-  top: 5rem;
-  left: 32rem;
-  width: 6rem;
-  height: 10rem;
-}
-.trend .menu button{
-  background-color: transparent;
-  border-color: transparent;
+.coln .form{
+  top: 20%;
+  font-size: 0.6rem;
   color: cadetblue;
-  font-size: 0.5rem;
-  width: 4rem;
-  height: 2rem;
 }
-.trend .menu button:hover{
-  color: rgb(212, 131, 10);
+.coln .form .select{
+  width: 20%;
+  background-color: transparent;
+  color: cadetblue;
+  font-size: 0.6rem;
+}
+.coln .form .select option{
+  color: cadetblue;
+  font-size: 0.6rem;
 }

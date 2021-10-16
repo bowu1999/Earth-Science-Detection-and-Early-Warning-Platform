@@ -131,40 +131,24 @@
 			<!-- 走势图 -->
 			<div class='panel trend'>
 				<div class="inner">
-					<div class='title' >
-						<h3 id='pl1_tl'>地下水位走势图</h3>
-						<a class="year">年</a>
-						<a class="quarter">季</a>
-						<a class="month">月</a>
-						<a class="week">周</a>
+					<div class="coln">
+						<form class="form">
+						     数据类型：
+						     <select class="select">
+						         <option>水位</option>
+						         <option>电导率</option>
+						         <option>电阻率</option>
+						         <option>温度</option>
+						         <option>TDS</option>
+						         <option>盐度</option>
+						      </select>
+						</form>
 					</div>
-					<div class='line'  id='pl1'></div>
-					<!-- 菜单1 -->
-					<div class='menu' id='m'>
-						<!-- 水位 -->
-						<button id='depth'>水位</button>
-						<!-- 电导率 -->
-						<button id='conduct'>电导率</button>
-						<!-- 电解率 -->
-						<button id='resistivity'>电解率</button>
-						<!-- 温度 -->
-						<button id='temperature'>温度</button>
-						<!--tds -->
-						<button id='tds'>TDS</button>
-						<!-- 盐度 -->
-						<button id='salinity'>盐度</button>
-					</div>
+					<div class="coln" id='pl1'></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- script部分 -->
-	<!-- 百度地图 -->
-	<!-- 百度地图密钥 -->
-	<!-- <script type="javascript/html" src="baidumap.html"></script>
-	<script>
-            $("#mapDiv").load("baidumap.html");
-        </script> -->
     <script type="text/javascript">
     	document.getElementById("mapDiv").innerHTML = '<object type="text/html" data="baidumap.html" width="100%" height="100%"></object>';
     </script>
